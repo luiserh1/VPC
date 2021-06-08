@@ -1,4 +1,9 @@
 ﻿ID;Accuracy en test;Error;Parámetros totales;Parámetros Entrenables;Tiempo aproximado por epoch (s);Notas;;;;;;
-basic;0.832;0,168;1,840,330;1,838,346;20;Implementación básica del repositorio de Roberto + EarlyStopping;;;;;;
-VGG11;;;32,221,058;32,215,554;78;;;;;;; 
-VGG16;;;37,721,154;37,712,706;60;;;;;;;
+basic;0.842;0,158;1,840,330;1,838,346;20;Implementación básica del repositorio de Roberto + EarlyStopping;;;;;;
+VGG11;0.872;0,128;32,221,058;32,215,554;29;;;;;;; 
+VGG16;0.905;0,095;37,721,154;37,712,706;36;;;;;;;
+VGG11_DA;0,787;0,213;32,221,058;32,215,554;30;Implementación con la DA que mejores resultados dio en RNA;;;;;;
+VGG11_DA_b;0.844;0,156;32,221,058;32,215,554;30;Implementación quitando el vertical flip del DA;;;;;;
+VGG16_DA;0,834;0,166;37,721,154;37,712,706;;Implementación con la DA que mejores resultados dio en RNA Perdí el notebook :(;;;;;;
+WideResNet_K8;0,97;0,03;23,377,290;23,362,922;;;;;;;;
+WideResNet_K8_NoPreTrained;;;;;;;;;;;;

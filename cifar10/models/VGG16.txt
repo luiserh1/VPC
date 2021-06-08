@@ -155,3 +155,8 @@ MÁS DETALLES:
 - EarlyStopping
 	> Accuracy
 	> Patience: 3
+[Data Augmentation]
+ImageGenerator:
+	> width_shift_range=0.2
+	> height_shift_range=0.2
+	> horizontal_flip=True	
