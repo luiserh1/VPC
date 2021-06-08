@@ -1,0 +1,4 @@
+﻿ID;Accuracy en test;Error;Parámetros totales;Parámetros Entrenables;Tiempo aproximado por epoch (s);Notas;;;;;;
+basic;0.832;0,168;1,840,330;1,838,346;20;Implementación básica del repositorio de Roberto + EarlyStopping;;;;;;
+;;;;;;;;;;;; 
+VGG16;;;49,642,314;49,636,938;60;;;;;;;
