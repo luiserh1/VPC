@@ -48,7 +48,6 @@ Por últomo, el directorio con más interés gráfico <i>:)</i>. En él director
 
 <p align="justify"> 
 Esta sección tiene un aspecto que se asimila más al de una memoria, en contraposición a la anterior, que se limitaba a presentar los contenidos del repositorio. Aquí se va a presentar un pequeño resumen de los modelos empleados y un pequeño razonamiento de porque han sido escogidos, dados los objetivos. La estructura para todas las tareas es la misma: primeramente se presenta el problema en cuestión, junto a los objetivos; en segundo lugar se mostrará una tabla con los resultados obtenidos para la tarea; junto al identificador del modelo empleado aparecerá el resultado. Seguidamente se hanlará de las decisiones de diseño y se presentarán, en caso de haberlos, algunos datos de interés observados. Finalmente, se comentaran las conclusiones pertinentes.
- 
 </p>
 
 ### CIFAR10
@@ -103,7 +102,9 @@ Los últimos resultados obtenidos daban la confianza para empezar a probar con d
 Llegados a este punto comienza la materia avanzada. Tenemos 3 configuraciones de <i>WideResNets</i> y 2 de DenseNet. Las fuentes para el desarrollo de las <i>WidwResNets</i> son dos, este post de <a href="https://www.kaggle.com/zjaume/resnet-cifar10"><i>Kaggle</i></a> para la versión con pesos iniciales automáticos y este <a href="https://github.com/keras-team/keras-contrib/blob/3fc5ef709e061416f4bc8a92ca3750c824b5d2b0/keras_contrib/applications/wide_resnet.py">repositorio</a> de <i>Kaggle</i> sobre las mismas. En cuanto a las <i>DenseNets</i>, ambas versiones implementadas son sin pesos aleatorios y la fuente es también un <a href="https://github.com/keras-team/keras-contrib/blob/3fc5ef709e061416f4bc8a92ca3750c824b5d2b0/keras_contrib/applications/densenet.py">repositorio</a> de <i>Keras</i>. Podemos ver que la <i>WideResenet</i> de <i>k=4</i> entrena aparentemenro mucho más rápido que la de <i>k=8</i>, pero el beneficio también es palpable. El gato al agua se lo lleva la red que partía con pesos ya preentrenados en la misma tarea, que consigue un arrollador 97% de <i>accuracy</i>. Las <i>DenseNet</i> no dan tanto para comentar en esta ocasión, salvo que han dado bastantes problemas para implementar y que finalmente, por el coste temporal, se ha descartado la idea de crear una de estas redes con los pesos preentrenados, a semejanza de la anterior expuesta. Viendo la tendencia, era una red de gran potencial.
 </p>
 
+<p align="justify"> 
 En cuanto a las conclusiones, todos los modelos han tenido la misma base, como se ha comentado, pero se ha podido percibir que tal vez no era la mejor. Por un fallo de diseño inicial, el tamaño de <i>batch</i> se estableción a 100 y el número de épocas a 75. Lo que pudo pareceer una nimiedad al comienzo, haciendo el experimento de reducir el tamaño de lotes a 32 (<i>DenseNet</i> Vs <i>DenseNet_Batch32</i>), queda en evidencia. También era el mismo el planificador de enfriamiento del factor de aprendizaje y podemos apreciar en muchos gráficos que la tasa de validación varía demasiado de cara al final en demasiadas ocasiones. Finalmente, asumimos los fallos que han resultado evidentes, pero el resultado es altamente satisfactorio.
+</p>
 
 ### LFW
 
