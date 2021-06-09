@@ -100,10 +100,8 @@ Los últimos resultados obtenidos daban la confianza para empezar a probar con d
 </p>
 
 <p align="justify">
-Llegados a este punto comienza la materia avanzada. Tenemos 3 configuraciones de <i>WideResNets</i> y 2 de DenseNet. Las fuentes para el desarrollo de las <i>WidwResNets</i> son dos, este post de <a href="https://www.kaggle.com/zjaume/resnet-cifar10"><i>Kaggle</i></a> para la versión con pesos iniciales automáticos y este <a href="https://github.com/keras-team/keras-contrib/blob/3fc5ef709e061416f4bc8a92ca3750c824b5d2b0/keras_contrib/applications/wide_resnet.py">repositorio</a> de <i>Kaggle</i> sobre las mismas. En cuanto a las <i>DenseNets</i>, ambas versiones implementadas son sin pesos aleatorios y la fuente es también un <a href="https://github.com/keras-team/keras-contrib/blob/3fc5ef709e061416f4bc8a92ca3750c824b5d2b0/keras_contrib/applications/densenet.py">repositorio</a> de <i>Keras</i>.
+Llegados a este punto comienza la materia avanzada. Tenemos 3 configuraciones de <i>WideResNets</i> y 2 de DenseNet. Las fuentes para el desarrollo de las <i>WidwResNets</i> son dos, este post de <a href="https://www.kaggle.com/zjaume/resnet-cifar10"><i>Kaggle</i></a> para la versión con pesos iniciales automáticos y este <a href="https://github.com/keras-team/keras-contrib/blob/3fc5ef709e061416f4bc8a92ca3750c824b5d2b0/keras_contrib/applications/wide_resnet.py">repositorio</a> de <i>Kaggle</i> sobre las mismas. En cuanto a las <i>DenseNets</i>, ambas versiones implementadas son sin pesos aleatorios y la fuente es también un <a href="https://github.com/keras-team/keras-contrib/blob/3fc5ef709e061416f4bc8a92ca3750c824b5d2b0/keras_contrib/applications/densenet.py">repositorio</a> de <i>Keras</i>. Podemos ver que la <i>WideResenet</i> de <i>k=4</i> entrena aparentemenro mucho más rápido que la de <i>k=8</i>, pero el beneficio también es palpable. El gato al agua se lo lleva la red que partía con pesos ya preentrenados en la misma tarea, que consigue un arrollador 97% de <i>accuracy</i>
 </p>
-
-
 
 
 ### LFW
