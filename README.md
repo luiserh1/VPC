@@ -90,9 +90,13 @@ Como ya se ha antticipado, primero presentamos los resultados y luego los discut
 | WideResNet_K8_NoPreTrained | 0.855    | 0,145 | 2337729            | 23362922               | 198                |
 | DenseNet                   | 0.852    | 0,148 | 1084428            | 1065708                | 215                |
 
+<p align="justify">
 El primero objetivo fue hacer la implementación de redes convolucionales sencillas, el modelo en cuestión es el llamado *basic* y también incorpora un generador de imágenes sencillo para aportar algo de DA. El modelo es directamente el ofrecido en la práctica y obtiene el resultado expuesto, que podemos tomar como referencia. El siguiente paso fue implementar topologías VGG. En todo caso, salvo se diga lo contrarior, y esto vale para todo el texto, los modelos más avanzados están construidos sobre los anteriores, por lo que si alguna característica no se especifica, segurmaente la comparta con su predecesor; toda la información en los directorios *models*. Continuando con las redes VGG, suimplementación resultó sencilla y los resultadso acompañaron. Podemos observar un aumento proporcional en este caso con el aumento en la accuracy y el coste temporal por época, aunque este último dato se tiene solo como referencia, pues las máquinas de Google Colab no son todas igual de capaces.
+</a>
 
+<p align="justify">
 Los últimos resultados obtenidos daban la confianza para empezar a probar con distintas combinaciones del generador de imágenes. No obstante, los resultados no acompañaron la primera vez; bajo las configuraciones *VGG11_DA* y *VGG16_DA* se obtienen unos resultados considerablemente peores que en los casos en los que no se modifica el DA. Las cambios al respecto se habían hecho a imitación de la combinación que formó parte de la mejor solución a este problema, propuesto en otra asignatura del máster. Pero, contra todo pronóstico, esta configuracióin era un lastre para los resultados. Se entiende que la resolución de las imágenes no da mucho juego a ese respecto y sobretodo, aplicar el volteo vertical es una decisión terrible, pues como podemos ver en *VGG11_DA_b*, donde se desactivo, se logra una reducción del error superior al 5%. Reflexionando sobre ello, es cierto que quizá es poco común encontrar aviones del revés (no como los gatos), por lo que tiene sentido dejarlo así.
+</a>
 
 Llegados a este punto comienza la materia avanzada. Tenemos 3 configuraciones de *WideResNets* y 2 de DenseNet.
 
@@ -105,8 +109,14 @@ Llegados a este punto comienza la materia avanzada. Tenemos 3 configuraciones de
 * Y un total de 1680 personas aparecen en más de una foto
 * Está desbalanceado respecto a la realidad humana. <a href="https://www.researchgate.net/figure/Distribution-of-the-LFW-database-images-over-the-ethnicity-in-the-individual-folds_fig5_228888218">Fuente</a> de las imágenes
 
-![ethnicity](https://user-images.githubusercontent.com/54946908/121286669-766cbf80-c8e0-11eb-8dba-3d8d3ac06d7a.png)
-![gender](https://user-images.githubusercontent.com/54946908/121286673-77055600-c8e0-11eb-921b-9fa95100e6c0.png)
+<div class="row">
+  <div class="column">
+    <img src="https://user-images.githubusercontent.com/54946908/121286669-766cbf80-c8e0-11eb-8dba-3d8d3ac06d7a.png" width=50% alt="Gender distribution" align="center">
+  </div>
+  <div class="column">
+    <img src="https://user-images.githubusercontent.com/54946908/121286673-77055600-c8e0-11eb-921b-9fa95100e6c0.png" width=50% alt="Etnithity distribution" align="center">
+  </div>
+</div>
 
 Los objetivos con respecto a este conjunto de datos se presentan de forma concisa, pero no por ello son más sencillos. Estos son:
 
@@ -128,3 +138,11 @@ Las configuraciones para los modelos y sus respectivos resultados se presenatn e
 | StartingCNN_32x32I         | 0.945    | 0,055 | 294114             | 292322                 |
 | StartingCNN_16x16I         | 0.902    | 0,098 | 195810             | 194018                 |
 | StartingCNN_32x32_b        | **0.927**| 0,073 | 75122              | 74226                  |
+
+<p align="justify">
+Las configuraciones que tienen un identificador que comienza por *a* o por *b* son simples intentos de fuerza bruta de superar las marcas. Con *a2* y un total de 11551426 ya se logra supera el primer objetivo. Cuando comienza por *a* y *b* pertecenecen al primer y segundo objetivo, respectivamente. Cuando se ha mencionado fuerza bruta se hacía referencia a tomar el modelo *basic* usado en la tarea anterior y añadirle capas y profundidad manualmente hasta alcanzar el objetivo. Aún así, observese que el número de parámetros entrenables entre los dos modelos del primer objetivo no varía, es en la modificacióin de otros hiperparámetros que se logra. El segundo objetivo se intentó lograr capando por distintas partes *a2*, siendo *b2* la mejor aproximación, pero lejos de ser un buen objetivo.
+</a>
+
+<p align="justify">
+Es entonces cuando el recomendado <a href="https://www.researchgate.net/figure/Distribution-of-the-LFW-database-images-over-the-ethnicity-in-the-individual-folds_fig5_228888218">paper</a> entra en escena. *StartingCNN* está hecho a semejanza de lo que los autores describen como su punto de partida de cara a encontrar la red minimalista óptima para el reconocimiento basado en rostros. No obstance, cadece del apoyo por preproceso que podía tener la original, pues las imágenes no se recentran hacia la faz. Aún así, el resultado es estupendo; con 10 veces menos parámetros, se obtiene un error similar a *a2*, el mejor resultado hasta ahora. Posteriormente, se procede a reducir el tamaño de las imagenes de entrada; esto reduce considerablemente el número de parámetros y podemos observar que hasta un tamaño de entrada de 32x32 no se aprecian grandes pérdidas, mientras se ha partido el número de parámetros entre 4. Además de reducir el tamaño de entrada, se había adaptado la red a una similar a la propuesta *I* de los autores del paper, siendo finalmente bastanet adaptada. Una vez decidido el tamaño de entrada ideal, se redujo a la mitad el ancho de las capas convolucionales y el número de neuronas en la capa densa. El resultado, el segundo objetivo cumplido con menos del 75% de parámetros permitidos requerido.
+</a>
