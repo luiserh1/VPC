@@ -89,6 +89,7 @@ Como ya se ha antticipado, primero presentamos los resultados y luego los discut
 | WideResNet_K4_NoPreTrained | 0,778    | 0,212 | 5860298            | 5853098                | 76                 |
 | WideResNet_K8_NoPreTrained | 0.855    | 0,145 | 2337729            | 23362922               | 198                |
 | DenseNet                   | 0.852    | 0,148 | 1084428            | 1065708                | 215                |
+| DenseNet_Batch32           | 0.885    | 0,115 | 1084428            | 1065708                | 108                |
 
 <p align="justify">
 El primero objetivo fue hacer la implementación de redes convolucionales sencillas, el modelo en cuestión es el llamado *basic* y también incorpora un generador de imágenes sencillo para aportar algo de DA. El modelo es directamente el ofrecido en la práctica y obtiene el resultado expuesto, que podemos tomar como referencia. El siguiente paso fue implementar topologías VGG. En todo caso, salvo se diga lo contrarior, y esto vale para todo el texto, los modelos más avanzados están construidos sobre los anteriores, por lo que si alguna característica no se especifica, segurmaente la comparta con su predecesor; toda la información en los directorios *models*. Continuando con las redes VGG, suimplementación resultó sencilla y los resultadso acompañaron. Podemos observar un aumento proporcional en este caso con el aumento en la accuracy y el coste temporal por época, aunque este último dato se tiene solo como referencia, pues las máquinas de Google Colab no son todas igual de capaces.
